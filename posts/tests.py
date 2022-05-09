@@ -135,7 +135,7 @@ class CacheTest(InitTestMixin, TestCase):
         self.post = Post.objects.create(text='init_text', author=self.user)
 
     def test_index_page_cache(self):
-        with self.assertNumQueries(4):
+        with self.assertNumQueries(6):
             response = self.anonim_user.get(reverse('index'))
             self.assertEqual(response.status_code, 200)
             response = self.anonim_user.get(reverse('index'))
